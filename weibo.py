@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # -*- coding: utf-8 -*-
 
 """Python sina weibo sdk.
@@ -17,6 +20,7 @@ import requests
 
 
 class Client(object):
+
     def __init__(self, api_key, api_secret, redirect_uri, token=None):
         # const define
         self.site = 'https://api.weibo.com/'
@@ -42,7 +46,7 @@ class Client(object):
             'redirect_uri': self.redirect_uri
         }
         return "{0}?{1}".format(
-            self.authorization_url, urllib.urlencode(params))
+            self.authorization_url, urllib.parse.urlencode(params))
 
     @property
     def alive(self):

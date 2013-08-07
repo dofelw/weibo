@@ -35,6 +35,8 @@ class Client(object):
 
         self.session = requests.session()
 
+        self.expires_at = None
+
         # activate client directly if given token
         if token:
             self.set_token(token)
@@ -50,7 +52,7 @@ class Client(object):
 
     @property
     def alive(self):
-        if self.expires_at:
+        if self.expires_at is not None:
             return self.expires_at > time.time()
         else:
             return False
